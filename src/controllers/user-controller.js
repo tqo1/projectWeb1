@@ -39,11 +39,13 @@ exports.get = async(req, res, next) => {
 }
 
 exports.getById = async(req, res, next) => {
-     try {
-         res.status(500).send(repository.getById(req.params.id));
-     } catch(e) {
-         res.status(500).send({message: 'Nope'});
-     }
+    try {
+        let data = await repository.getById();
+        res.status(200).send(data);
+      //  res.status(500).send(repository.getById(req.params.id));
+    } catch(e) {
+        res.status(500).send({message: 'Nope'});
+    }
 }
 
 // exports.view = function (req, res) {
