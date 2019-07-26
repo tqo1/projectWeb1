@@ -4,7 +4,7 @@ const repository = require('../repositories/user-repository');
 const validationContract = require('../validators/validator');
 const authService = require('../services/auth-service');
 const md5 = require('md5');
-// User = require('.user');//
+
 /**
  * @api {get} /user Request Users information
  * @apiName GetUsers
@@ -40,23 +40,14 @@ exports.get = async(req, res, next) => {
 
 exports.getById = async(req, res, next) => {
     try {
-        let data = await repository.getById(req.params.id);
+        let data = await repository.getById(id);
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send({message: 'Nope'});
     }
 }
 
-// exports.view = function (req, res) {
-//     User.findById(req.params.user_id, function (err, data) {
-//         if (err)
-//             res.send(err);
-//         res.json({
-//             message: 'Contact details loading..',
-//             data: user
-//         });
-//     });
-// };
+
 /**
  * @api {post} /user/ Create a new User
  * @apiName CreateUser

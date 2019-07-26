@@ -48,4 +48,5 @@ if(config.MODE == 'development') {
 
 app.use('/', indexRoute);
 app.use('/users', userRoute);
+
 module.exports = app;
