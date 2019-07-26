@@ -40,9 +40,8 @@ exports.get = async(req, res, next) => {
 
 exports.getById = async(req, res, next) => {
     try {
-        let data = await repository.getById();
+        let data = await repository.getById(id);
         res.status(200).send(data);
-      //  res.status(500).send(repository.getById(req.params.id));
     } catch(e) {
         res.status(500).send({message: 'Nope'});
     }
