@@ -26,12 +26,19 @@ mongoose.connection.on('open',function (err){
         console.log("database connected successfully");
     }
 })
-//load models
+//load models for User
 const User = require('./models/user');
 
-//load routes
+//
+//load models for School
+const School = require('./models/school');
+
+//load routes 
 const indexRoute = require('./routes/index-route');
 const userRoute = require('./routes/user-route');
+//school
+const schoolRoute = require('./routes/school-route');
+//
 
 app.use(bodyParser.json({ limit: '5mb' }));
 app.use(bodyParser.urlencoded({ extentend: false }));
@@ -48,5 +55,5 @@ if(config.MODE == 'development') {
 
 app.use('/', indexRoute);
 app.use('/users', userRoute);
-
+app.use('/schools', schoolRoute); //school
 module.exports = app;
