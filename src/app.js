@@ -57,3 +57,7 @@ app.use('/', indexRoute);
 app.use('/users', userRoute);
 app.use('/schools', schoolRoute); //school
 module.exports = app;
+
+const Essay = require('./models/essay');
+const essayRoute = require('./routes/essay-route');
+app.use('/essays', essayRoute); //essay
