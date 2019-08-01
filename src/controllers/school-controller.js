@@ -1,9 +1,9 @@
 'use strict'
 
 const repository = require('../repositories/school-repository');
-//const validationContract = require('../validators/validator');
+const validationContract = require('../validators/validator');
 //const authService = require('../services/auth-service');
-const md5 = require('md5');
+//const md5 = require('md5');
 // User = require('.user');//
 /**
  * @api {get} /school Request School information
@@ -38,7 +38,7 @@ exports.get = async(req, res, next) => {
 
 exports.getById = async(req, res, next) => {
     try {
-        let data = await repository.getById(req.params.id);
+        let data = await repository.getById(req.params.name);
         res.status(200).send(data);
     } catch(e) {
         res.status(500).send({message: 'Fail to get the specific school'});

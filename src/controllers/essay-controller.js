@@ -1,3 +1,8 @@
+'use strict'
+
+const repository = require('../repositories/essay-repository');
+const validationContract = require('../validators/validator');
+
 exports.get = async(req, res, next) => {
     try {
         let data = await repository.get();
@@ -17,6 +22,8 @@ exports.getById = async(req, res, next) => {
         res.status(500).send({message: 'Fail to get the specific essay'});
     }
 }
+
+
 exports.post = async(req, res, next) => {
     try {
 
@@ -31,5 +38,15 @@ exports.post = async(req, res, next) => {
         res.status(200).send({message: 'Essay created'});
     } catch(e) {
         res.status(500).send({error: e});
+    }
+}
+
+exports.getBySchoolId = async(req, res, next) => {
+    try {
+        let data = await repository.getBySchoolId(req.params.schoolId);
+        res.status(200).send(data);
+    } catch(e) {
+        console.log(e);
+        res.status(500).send({message: 'Fail to get the specific essay by school ID'});
     }
 }

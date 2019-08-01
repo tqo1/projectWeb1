@@ -32,12 +32,16 @@ const User = require('./models/user');
 //
 //load models for School
 const School = require('./models/school');
+//load models for School
+const Essay = require('./models/essay');
 
 //load routes 
 const indexRoute = require('./routes/index-route');
 const userRoute = require('./routes/user-route');
 //school
 const schoolRoute = require('./routes/school-route');
+//essay
+const essayRoute = require('./routes/essay-route');
 //
 
 app.use(bodyParser.json({ limit: '5mb' }));
@@ -56,8 +60,5 @@ if(config.MODE == 'development') {
 app.use('/', indexRoute);
 app.use('/users', userRoute);
 app.use('/schools', schoolRoute); //school
-module.exports = app;
-
-const Essay = require('./models/essay');
-const essayRoute = require('./routes/essay-route');
 app.use('/essays', essayRoute); //essay
+module.exports = app;

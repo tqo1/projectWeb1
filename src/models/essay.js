@@ -9,7 +9,7 @@ const schema = new Schema({
         required: true,
     },
     wordCount: {
-        type: Integer,
+        type: Number,
         required: true,
     },
     deadline: {
